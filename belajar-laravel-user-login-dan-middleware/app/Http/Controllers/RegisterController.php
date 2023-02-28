@@ -15,7 +15,7 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function store(Request $request){        
+    public function store(Request $request){     
         $validatedData = $request->validate([
             'name' => 'required|max:255|alpha',
             'username' => ['required', 'min:3', 'max:255', 'unique:users'],
@@ -29,7 +29,6 @@ class RegisterController extends Controller
         User::create($validatedData);
 
         // $request->session()->flash('success', 'Registration successfull! Please login');
-
         return redirect('/login')->with('success', 'Registration successfull! Please login');
     }
 }

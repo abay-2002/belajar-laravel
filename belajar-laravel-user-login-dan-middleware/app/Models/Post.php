@@ -46,4 +46,11 @@ class Post extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    
+    // Customizing The Key
+    // Sometimes you may wish to resolve Eloquent models using a column other than id. To do so, you may specify the column in the route parameter definition:
+    // If you would like model binding to always use a database column other than id when retrieving a given model class, you may override the getRouteKeyName method on the Eloquent model:
+    public function getRouteKeyName(){
+        return 'slug';
+    }
 }
